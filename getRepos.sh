@@ -18,6 +18,9 @@ function getRepoGitHub() {
 
   fi
 
+  #git --git-dir=${line}/.git --work-tree=${line} remote set-url origin "git@github.com:${forkedBy}/${line}"
+  #git --git-dir=${line}/.git --work-tree=${line} remote set-url upstream "git@github.com:${masterBy}/${line}"
+
   echo "*************** Update from upstream to master(fork)"
   git --git-dir=${line}/.git --work-tree=${line} pull upstream master
 
