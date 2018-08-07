@@ -2,14 +2,16 @@
 set -m # Enable Job Control
 
 
+
 flagTest="false"
+finished="finished.txt"
 
 function complilingProjects() {
   line=$1;
   if [ -d "$line" ];then
     echo "*************** Compliling... : $line"
-    cd $line
-    mvn clean install -DskipTests=$flagTest
+    mvn -f $line clean install -DskipTests=$flagTest
+    echo $line >> finished
   else
     echo "No es un directorio $line"
     exit -1
@@ -30,8 +32,13 @@ else
 fi
 
 if [ ! -z  $2 ] ; then
+  echo "Will skip tests"
   flagTest="true"
 fi
+
+
+
+rm -f $finished
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
   complilingProjects $line $flagTest
