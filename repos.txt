@@ -1,0 +1,10 @@
+jbpm
+drools
+droolsjbpm-knowledge
+droolsjbpm-integration
+droolsjbpm-build-bootstrap
+jbpm-designer
+jbpm-wb
+kie-wb-distributions
+kie-wb-common
+kie-docs
