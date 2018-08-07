@@ -4,6 +4,7 @@ set -m # Enable Job Control
 forkedBy="jethromx"
 masterBy="kiegroup"
 
+###############################################################################
 function getRepoGitHub() {
   line=$1;
 
@@ -34,6 +35,17 @@ function getRepoGitHub() {
   git --git-dir=${line}/.git --work-tree=${line} push origin master
 
 }
+###############################################################################
+
+if [ -z $1 ]; then
+  echo "The script need a parameter "
+  exit -1
+else
+  if [ ! -f $1 ]; then
+    echo "The file must exist "
+    exit -2
+  fi
+fi
 
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
